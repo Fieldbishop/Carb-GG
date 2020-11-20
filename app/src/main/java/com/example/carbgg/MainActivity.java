@@ -8,6 +8,8 @@ public class MainActivity extends AppCompatActivity {
     
     /*testiiiii*/
 
+    /* Riku testaa kans */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
