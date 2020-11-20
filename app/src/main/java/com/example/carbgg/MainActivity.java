@@ -10,6 +10,8 @@ public class MainActivity extends AppCompatActivity {
 
     /* lisätesti */
 
+    /* vielä kerran!! */
+
     /* Riku testaa kans */
 
     @Override
