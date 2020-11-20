@@ -13,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
     /* vielä kerran!! */
 
     /* Riku testaa kans */
+    /*teeest2*/
+    /*le löl*/
+
+
+    /* ette vain osaa*/
 
     /*  saatanan paska */
 
