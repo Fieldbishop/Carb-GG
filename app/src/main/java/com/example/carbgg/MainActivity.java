@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     /* Riku testaa kans */
 
+    /*  saatanan paska */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
