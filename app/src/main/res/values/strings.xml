@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Carb GG</string>
+    <string name="settings">Settings</string>
+    <string name="calculator">Calculator</string>
+    <string name="meals">Meals</string>
+    <string name="history">History</string>
 </resources>

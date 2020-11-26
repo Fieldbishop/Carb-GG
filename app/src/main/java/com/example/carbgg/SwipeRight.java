@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
-public class MainActivity extends AppCompatActivity {
+public class SwipeRight extends AppCompatActivity {
+
     float x1, x2, y1, y2;                                                   // values needed for swipe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_swipe_right);
     }
     public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
         switch (touchevent.getAction()) {
@@ -24,10 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 x2 = touchevent.getX();
                 y2 = touchevent.getY();
                 if (x1 < x2) {
-                    Intent i = new Intent(MainActivity.this, SwipeLeft.class);
-                    startActivity(i);
-                }else if(x2 < x1){
-                    Intent i = new Intent(MainActivity.this, SwipeRight.class);
+                    Intent i = new Intent(SwipeRight.this, MainActivity.class);
                     startActivity(i);
                 }
                 break;
