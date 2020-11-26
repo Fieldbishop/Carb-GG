@@ -1,22 +1,35 @@
 package com.example.carbgg;
 
-public class Settings {
+import android.content.Context;
+import android.content.SharedPreferences;
+
+public class Settings{
     protected int insulinEfficiency;
     protected int constantValue;
-    //private final String insulinEfficiencyKey = "inEfKey";
-    //ivate final String constantValueKey = "conValKey";
+    private final String insulinEfficiencyKey = "inEfKey";
+    private final String constantValueKey = "conValKey";
 
+    public Settings(){
+
+    }
     public Settings(int insulinEfficiency, int constantValue){
         this.insulinEfficiency = insulinEfficiency;
-        if(constantValue != 0){
-            this.constantValue = constantValue;
-        }
+        this.constantValue = constantValue;
+
+        saveValues();
     }
 
-    public int getInsulinEfficiency() {
+    private void saveValues(){
+
+    }
+    protected void recallValues(){
+        //SharedPreferences prefGetter = getSharedPreferences(insulinEfficiencyKey,Context.MODE_PRIVATE);
+    }
+
+    protected int getInsulinEfficiency(){
         return insulinEfficiency;
     }
-    public int getConstantValue(){
+    protected int getConstantValue(){
         return constantValue;
     }
 }

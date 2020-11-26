@@ -1,13 +1,14 @@
 package com.example.carbgg;
 
-public class InsulinCalculator{
+public class InsulinCalculator extends Settings{
 
     private float insulinEfficiency = 1;
     private float carbs, carbsDivision;
     private float insulinAmount;
 
 
-    public InsulinCalculator(int carbs){
+    public InsulinCalculator(int carbs)
+    {
         this.carbs = (float)carbs;
     }
 
