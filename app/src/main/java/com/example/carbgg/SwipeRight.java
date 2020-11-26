@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 
 public class SwipeRight extends AppCompatActivity {
 
-    float x1, x2, y1, y2;                                                   // values for swipe
+    float x1, x2, y1, y2;                                                   // values needed for swipe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,18 +27,9 @@ public class SwipeRight extends AppCompatActivity {
                 if (x1 < x2) {
                     Intent i = new Intent(SwipeRight.this, MainActivity.class);
                     startActivity(i);
-                    overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 }
                 break;
         }
         return false;
-    }
-    public void btnCalculator(View view){
-        Intent j = new Intent(SwipeRight.this,MainActivity.class);
-        startActivity(j);
-    }
-    public void btnMeals(View view){
-        Intent j = new Intent(SwipeRight.this,SwipeLeft.class);
-        startActivity(j);
     }
 }
