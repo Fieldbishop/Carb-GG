@@ -4,4 +4,7 @@
     <string name="calculator">Calculator</string>
     <string name="meals">Meals</string>
     <string name="history">History</string>
+    <string name="save">Save</string>
+    <string name="enter_your_insulin_coefficient">Enter your insulin coefficient</string>
+    <string name="enter_insulin_coefficient">Enter insulin coefficient</string>
 </resources>

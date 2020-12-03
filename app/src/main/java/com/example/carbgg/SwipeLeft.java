@@ -16,6 +16,37 @@ public class SwipeLeft extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_left);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:

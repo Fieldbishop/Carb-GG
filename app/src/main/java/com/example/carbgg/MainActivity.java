@@ -4,14 +4,47 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
+
 public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;                                                   // values for swipe
+    private TextView tv;
+    String defaultmsg = "Please enter meals";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv=findViewById(R.id.tvInsulinAmount);
+        tv.setText(defaultmsg);
+
     }
-    public boolean onTouchEvent(MotionEvent touchevent){ //ghetto swipe 2001
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchevent.getX();
@@ -32,14 +65,17 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
     public void btnSettings(View view) {
         Intent j = new Intent(MainActivity.this,SettingsPage.class);
         startActivity(j);
     }
+
     public void btnMeals(View view){
         Intent j = new Intent(MainActivity.this,SwipeLeft.class);
         startActivity(j);
     }
+
     public void btnHistory(View view){
         Intent j = new Intent(MainActivity.this,SwipeRight.class);
         startActivity(j);
