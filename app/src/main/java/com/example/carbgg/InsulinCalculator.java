@@ -10,7 +10,7 @@ public class InsulinCalculator extends Settings{
     public InsulinCalculator(int carbs)
     {
         this.carbs = (float)carbs;
-        this.insulinEfficiency = super.insulinEfficiency;
+        this.insulinEfficiency = super.recallValues();
     }
 
     public int calculateInsulin(){
