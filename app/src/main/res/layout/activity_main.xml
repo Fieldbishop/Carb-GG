@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:onClick="btnMeals"
         android:foreground="@color/BtnForegroundNotActive"
         android:text="@string/meals"
         app:layout_constraintEnd_toStartOf="@+id/homeScreenButton"
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:foreground="@color/BtnForegroundNotActive"
+        android:onClick="btnHistory"
         android:text="@string/history"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/homeScreenButton"
@@ -45,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="btnSettings"
         android:text="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
