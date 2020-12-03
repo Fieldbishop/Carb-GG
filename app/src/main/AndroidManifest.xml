@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CarbGG">
-        <activity android:name=".SwipeRight"></activity>
+        <activity android:name=".SettingsPage"></activity>
+        <activity android:name=".SwipeRight" />
         <activity android:name=".SwipeLeft" />
         <activity android:name=".MainActivity">
             <intent-filter>
