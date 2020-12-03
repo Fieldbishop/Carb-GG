@@ -38,7 +38,7 @@ public abstract class MealRoomDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-/*
+
             // If you want to keep data through app restarts,
             // comment out the following block
             databaseWriteExecutor.execute(() -> {
@@ -47,13 +47,12 @@ public abstract class MealRoomDatabase extends RoomDatabase {
                 MealDao dao = INSTANCE.mealDao();
                 dao.deleteAll();
 
-                Meal meal = new Meal("Hello", 140, "");
+                Meal meal = new Meal("Hello", 140, "-");
                 dao.insert(meal);
-                meal = new Meal("World", 122, "");
+                meal = new Meal("World", 122, "-");
                 dao.insert(meal);
             });
 
- */
         }
     };
 }

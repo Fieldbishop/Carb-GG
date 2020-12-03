@@ -1,20 +1,53 @@
 package com.example.carbgg;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
+
 public class SwipeLeft extends AppCompatActivity {
 
     float x1, x2, y1, y2;                                                   // values for swipe
+    private MealViewModel mMealViewModel;
+    private FloatingActionButton newMeal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_left);
+
+        newMeal = findViewById(R.id.floatingActionButtonAddMeal);
+        newMeal.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent AddMealActivity = new Intent(SwipeLeft.this, com.example.carbgg.AddMealActivity.class);
+                startActivity(AddMealActivity);
+            }
+        });
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final MealListAdapter adapter = new MealListAdapter(new MealListAdapter.MealDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mMealViewModel = new ViewModelProvider(this).get(MealViewModel.class);
+
+        mMealViewModel.getAllMeals().observe(this, new Observer<List<Meal>>() {
+            @Override
+            public void onChanged(List<Meal> meals) {
+                adapter.submitList(meals);
+            }
+        });
     }
 
 

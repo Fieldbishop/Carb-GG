@@ -18,7 +18,7 @@ public class AddMealActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_meal);
 
         EditText editTextMealName = findViewById(R.id.editTextMealName);
         EditText editTextMealCarbs = findViewById(R.id.editTextMealCarbs);
@@ -36,7 +36,7 @@ public class AddMealActivity extends AppCompatActivity {
                     error.show();
                 } else {
                     String mealName = editTextMealName.getText().toString();
-                    float mealCarbs = Float.valueOf(editTextMealCarbs.getText().toString());
+                    float mealCarbs = Float.parseFloat(editTextMealCarbs.getText().toString());
 
                     Meal meal = new Meal(mealName, mealCarbs, "");
 
@@ -51,7 +51,7 @@ public class AddMealActivity extends AppCompatActivity {
                 AddMealActivity.this.clearAll();
             }
         });
-
+        /*
         buttonAllMeals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +59,7 @@ public class AddMealActivity extends AppCompatActivity {
                 startActivity(AllMealsActivity);
             }
         });
+        */
     }
 
     public void clearAll() {
