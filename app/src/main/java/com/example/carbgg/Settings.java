@@ -9,9 +9,6 @@ public class Settings{
     private final String insulinEfficiencyKey = "inEfKey";
     private Context context;
 
-    public Settings(){
-
-    }
     public Settings(int insulinEfficiency, Context context){
         this.insulinEfficiency = insulinEfficiency;
         this.context = context;
