@@ -14,7 +14,7 @@ public class Meal {
 
     @NonNull
     @ColumnInfo(name = "mealCarbs")
-    private Float mealCarbs;
+    private float mealCarbs;
 
     @ColumnInfo(name = "mealDescription")
     private String mealDescription;
@@ -27,7 +27,7 @@ public class Meal {
     private int mealSize;
     */
 
-    public Meal(@NonNull String mealName, @NonNull Float mealCarbs, String mealDescription) {
+    public Meal(@NonNull String mealName, @NonNull float mealCarbs, String mealDescription) {
         this.mealName = mealName;
         this.mealCarbs = mealCarbs;
         this.mealDescription = mealDescription;
