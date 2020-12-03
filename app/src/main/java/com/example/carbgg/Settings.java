@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-public class Settings{
+public class Settings extends MainActivity{
     protected int insulinEfficiency;
     private final String insulinEfficiencyKey = "inEfKey";
     private Context context;
 
+    public Settings(){
+
+    }
     public Settings(int insulinEfficiency, Context context){
         this.insulinEfficiency = insulinEfficiency;
         this.context = context;
