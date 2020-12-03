@@ -7,4 +7,9 @@
     <string name="save">Save</string>
     <string name="enter_your_insulin_coefficient">Enter your insulin coefficient</string>
     <string name="enter_insulin_coefficient">Enter insulin coefficient</string>
+    <string name="hint_name">Meal name</string>
+    <string name="hint_carbs">Carbohydrates amount</string>
+    <string name="button_save">Save meal</string>
+    <string name="empty_not_saved">Meal not saved because it is empty.</string>
+    <string name="meal_saved">Meal was added to the database</string>
 </resources>
