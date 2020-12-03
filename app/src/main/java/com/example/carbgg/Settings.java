@@ -10,11 +10,12 @@ public class Settings extends MainActivity {
     private Context context;
 
     public Settings() {
-
     }
 
     public Settings(int insulinEfficiency, Context context) {
-        this.insulinEfficiency = insulinEfficiency;
+        if(insulinEfficiency > 0){
+            this.insulinEfficiency = insulinEfficiency;
+        }
         this.context = context;
         saveValues();
     }
@@ -29,7 +30,7 @@ public class Settings extends MainActivity {
 
     protected int recallValues() {
         SharedPreferences prefGetter = context.getSharedPreferences(insulinEfficiencyKey, Context.MODE_PRIVATE);
-        this.insulinEfficiency = prefGetter.getInt(insulinEfficiencyKey, 0);
+        this.insulinEfficiency = prefGetter.getInt(insulinEfficiencyKey, 1);
         return this.insulinEfficiency;
 
     }
