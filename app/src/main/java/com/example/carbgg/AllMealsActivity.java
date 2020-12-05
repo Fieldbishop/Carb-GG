@@ -17,8 +17,6 @@ import java.util.List;
 
 public class AllMealsActivity extends AppCompatActivity {
 
-    private MealViewModel mMealViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +27,7 @@ public class AllMealsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mMealViewModel = new ViewModelProvider(this).get(MealViewModel.class);
+        MealViewModel mMealViewModel = new ViewModelProvider(this).get(MealViewModel.class);
 
         mMealViewModel.getAllMeals().observe(this, new Observer<List<Meal>>() {
             @Override

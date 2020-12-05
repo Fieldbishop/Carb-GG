@@ -20,15 +20,13 @@ import java.util.List;
 public class SwipeLeft extends AppCompatActivity {
 
     float x1, x2, y1, y2;                                                   // values for swipe
-    private MealViewModel mMealViewModel;
-    private FloatingActionButton newMeal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_left);
 
-        newMeal = findViewById(R.id.floatingActionButtonAddMeal);
+        FloatingActionButton newMeal = findViewById(R.id.floatingActionButtonAddMeal);
         newMeal.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent AddMealActivity = new Intent(SwipeLeft.this, com.example.carbgg.AddMealActivity.class);
@@ -41,7 +39,7 @@ public class SwipeLeft extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mMealViewModel = new ViewModelProvider(this).get(MealViewModel.class);
+        MealViewModel mMealViewModel = new ViewModelProvider(this).get(MealViewModel.class);
 
         mMealViewModel.getAllMeals().observe(this, meals -> adapter.submitList(meals));
 

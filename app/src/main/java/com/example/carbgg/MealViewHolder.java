@@ -21,8 +21,8 @@ class MealViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         mealItemView = itemView.findViewById(R.id.textView);
         itemView.setOnClickListener(view -> {
-            String singleMealName[] = mealItemView.getText().toString().split(", ");
-            String singleMealCarbsText[] = singleMealName[1].split(" ");
+            String[] singleMealName = mealItemView.getText().toString().split(", ");
+            String[] singleMealCarbsText = singleMealName[1].split(" ");
             int singleMealCarbs = Integer.parseInt(singleMealCarbsText[0]);
 
             Log.d("MEAL_NAME",singleMealName[0]);

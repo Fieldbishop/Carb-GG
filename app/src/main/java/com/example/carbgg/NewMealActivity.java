@@ -18,7 +18,7 @@ public class NewMealActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_word);
+        setContentView(R.layout.activity_new_meal);
 
         mEditMealView = findViewById(R.id.editTextMealName);
         mEditCarbsView = findViewById(R.id.editTextMealCarbs);
