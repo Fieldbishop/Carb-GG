@@ -14,15 +14,17 @@ public class Meal {
 
     @NonNull
     @ColumnInfo(name = "mealCarbs")
-    private float mealCarbs;
+    private Float mealCarbs;
 
     @ColumnInfo(name = "mealDescription")
     private String mealDescription;
 
+    @ColumnInfo(name = "isFavourite")
+    private boolean isFavourite;
+
     /*
     // mahd. lisattavat
 
-    private boolean isFavourite;
     private int mealCarbsPer;
     private int mealSize;
     */
@@ -31,18 +33,27 @@ public class Meal {
         this.mealName = mealName;
         this.mealCarbs = mealCarbs;
         this.mealDescription = mealDescription;
+        this.isFavourite = false;
+    }
+
+    public void setIsFavourite (boolean isFavourite) {
+        this.isFavourite = isFavourite;
     }
 
     public String getMealName() {
         return this.mealName;
     }
 
-    public float getMealCarbs() {
+    public Float getMealCarbs() {
         return this.mealCarbs;
     }
 
     public String getMealDescription() {
         return this.mealDescription;
+    }
+
+    public boolean getIsFavourite() {
+        return this.isFavourite;
     }
 
     public String getMeal() {

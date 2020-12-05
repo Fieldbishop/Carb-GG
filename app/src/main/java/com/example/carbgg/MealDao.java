@@ -10,7 +10,6 @@ import java.util.List;
 
 @Dao
 public interface MealDao {
-
     // allowing the insert of the same meal multiple times by passing a
     // conflict resolution strategy
     @Insert(onConflict = OnConflictStrategy.IGNORE)

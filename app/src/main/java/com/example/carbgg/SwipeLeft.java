@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -42,12 +43,12 @@ public class SwipeLeft extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mMealViewModel = new ViewModelProvider(this).get(MealViewModel.class);
 
-        mMealViewModel.getAllMeals().observe(this, new Observer<List<Meal>>() {
-            @Override
-            public void onChanged(List<Meal> meals) {
-                adapter.submitList(meals);
-            }
-        });
+        mMealViewModel.getAllMeals().observe(this, meals -> adapter.submitList(meals));
+
+        if (getIntent().hasExtra("SUCCESS")) {
+            Snackbar successSnack = Snackbar.make(findViewById(R.id.activity_swipe_left), R.string.meal_saved, Snackbar.LENGTH_LONG);
+            successSnack.show();
+        }
     }
 
 

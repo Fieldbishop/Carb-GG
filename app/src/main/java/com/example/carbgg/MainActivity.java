@@ -9,19 +9,23 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;                                                   // values for swipe
     private TextView tv;
-    String defaultmsg = "Please enter meals";
+    private String defaultmsg = "Please enter meals";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv=findViewById(R.id.tvInsulinAmount);
-        tv.setText(defaultmsg);
+        tv = findViewById(R.id.tvInsulinAmount);
 
+        if (this.getIntent().getExtras() != null) {
+            String mealName = this.getIntent().getStringExtra("MEAL_NAME");
+            int mealCarbs = this.getIntent().getIntExtra("MEAL_CARBS", 0);
+
+            tv.setText(mealName + ", " + Integer.toString(mealCarbs) + " g");
+        } else {
+            tv.setText(defaultmsg);
+        }
     }
-
-
-
-
 
 
 

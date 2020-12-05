@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -20,46 +21,48 @@ public class AddMealActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meal);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         EditText editTextMealName = findViewById(R.id.editTextMealName);
         EditText editTextMealCarbs = findViewById(R.id.editTextMealCarbs);
         Button buttonSave = findViewById(R.id.buttonSave);
-        Button buttonAllMeals = findViewById(R.id.buttonAllMeals);
 
         MealRoomDatabase db = MealRoomDatabase.getDatabase(this.getApplicationContext());
         MealDao mMealDao = db.mealDao();
 
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (TextUtils.isEmpty(editTextMealName.getText()) || TextUtils.isEmpty(editTextMealCarbs.getText())) {
-                    Snackbar error = Snackbar.make(AddMealActivity.this.findViewById(R.id.activity_add_meal), R.string.empty_not_saved, Snackbar.LENGTH_LONG);
-                    error.show();
-                } else {
-                    String mealName = editTextMealName.getText().toString();
-                    float mealCarbs = Float.parseFloat(editTextMealCarbs.getText().toString());
+        buttonSave.setOnClickListener(view -> {
+            if (TextUtils.isEmpty(editTextMealName.getText()) || TextUtils.isEmpty(editTextMealCarbs.getText())) {
+                    if (TextUtils.isEmpty(editTextMealName.getText()) && !TextUtils.isEmpty(editTextMealCarbs.getText())) {
+                        editTextMealName.setError("Please add meal name");
+                        editTextMealName.requestFocus();
+                    }
+                    else if (TextUtils.isEmpty(editTextMealCarbs.getText()) && !TextUtils.isEmpty((editTextMealName.getText()))) {
+                        editTextMealCarbs.setError("Please add carbohydrate amount");
+                        editTextMealCarbs.requestFocus();
+                    }
+                    else {
+                        editTextMealName.setError("Please add meal name");
+                        editTextMealCarbs.setError("Please add carbohydrate amount");
+                        editTextMealName.requestFocus();
+                    }
+            } else {
+                String mealName = editTextMealName.getText().toString();
+                float mealCarbs = Float.parseFloat(editTextMealCarbs.getText().toString());
 
-                    Meal meal = new Meal(mealName, mealCarbs, "");
+                Meal meal = new Meal(mealName, mealCarbs, "");
 
-                    MealRoomDatabase.databaseWriteExecutor.execute(() -> {
-                        mMealDao.insert(meal);
-                    });
+                MealRoomDatabase.databaseWriteExecutor.execute(() -> {
+                    mMealDao.insert(meal);
+                });
 
-                    Snackbar success = Snackbar.make(AddMealActivity.this.findViewById(R.id.activity_add_meal), R.string.meal_saved, Snackbar.LENGTH_LONG);
-                    success.show();
-                }
+                clearAll();
 
-                AddMealActivity.this.clearAll();
-            }
-        });
-        /*
-        buttonAllMeals.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent AllMealsActivity = new Intent(AddMealActivity.this, com.example.carbgg.AllMealsActivity.class);
+                Intent AllMealsActivity = new Intent(AddMealActivity.this, SwipeLeft.class);
+                AllMealsActivity.putExtra("SUCCESS", 1);
                 startActivity(AllMealsActivity);
             }
         });
-        */
     }
 
     public void clearAll() {
@@ -74,5 +77,13 @@ public class AddMealActivity extends AppCompatActivity {
         editTextMealCarbs.setText("");
 
         inputMethodManager.hideSoftInputFromWindow(editTextMealCarbs.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -26,4 +26,10 @@ class MealRepository {
             mMealDao.insert(meal);
         });
     }
+/*
+    public String getSingleMeal(String singleMealName){
+        return mMealDao.getSingleMeal();
+    }
+
+ */
 }

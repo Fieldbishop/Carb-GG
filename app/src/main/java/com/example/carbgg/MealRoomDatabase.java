@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Meal.class}, version = 2, exportSchema = false)
+@Database(entities = {Meal.class}, version = 3, exportSchema = false)
 public abstract class MealRoomDatabase extends RoomDatabase {
 
     public abstract MealDao mealDao();
@@ -39,20 +39,15 @@ public abstract class MealRoomDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-            // If you want to keep data through app restarts,
-            // comment out the following block
             databaseWriteExecutor.execute(() -> {
-                // Populate the database in the background.
-                // If you want to start with more words, just add them.
                 MealDao dao = INSTANCE.mealDao();
                 dao.deleteAll();
 
-                Meal meal = new Meal("Hello", 140, "-");
+                Meal meal = new Meal("Hello", 140, "");
                 dao.insert(meal);
-                meal = new Meal("World", 122, "-");
+                meal = new Meal("World", 122, "");
                 dao.insert(meal);
             });
-
         }
     };
 }
