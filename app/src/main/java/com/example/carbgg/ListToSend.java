@@ -25,6 +25,11 @@ public class ListToSend {
         return meals;
     }
 
+    public ArrayList<Meal> removeOne(int i){
+        meals.remove(i);
+        return meals;
+    }
+
     public void eraseList() {
         ourInstance = null;
     }

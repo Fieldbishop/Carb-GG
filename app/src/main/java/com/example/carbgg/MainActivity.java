@@ -2,8 +2,10 @@ package com.example.carbgg;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv;
     private ListView lv;
     private String defaultmsg = "Please enter meals";
+    ArrayAdapter<Meal> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,28 +23,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tvInsulinAmount);
         lv = findViewById(R.id.LvSelectedMealsToCalc);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames());
 
         if(ListToSend.getInstance() != null){
-            lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames()));
+            lv.setAdapter(adapter);
         }else{
             lv.setAdapter(null);
-            tv.setText("Please add some meals");
-        }
-
-
-        if (this.getIntent().getExtras() != null) {
-            String mealName = this.getIntent().getStringExtra("MEAL_NAME");
-            int mealCarbs = this.getIntent().getIntExtra("MEAL_CARBS", 0);
-
-            tv.setText(mealName + ", " + Integer.toString(mealCarbs) + " g");
-        } else {
             tv.setText(defaultmsg);
         }
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("test", "id=" + id);
+                ListToSend.getInstance().removeOne(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
     public void btnCalculate(View view) {
-        tv.setText("list reset");
+        tv.setText("Suggested amount of insulin intake: "+"1");
         ListToSend.getInstance().eraseList();
     }
+
 
 
 
