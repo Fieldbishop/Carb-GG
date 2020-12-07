@@ -101,8 +101,8 @@ public class SwipeLeft extends AppCompatActivity {
         Intent j = new Intent(SwipeLeft.this,MainActivity.class);
         startActivity(j);
     }
-    public void btnHistory(View view){
+    /*public void btnHistory(View view){
         Intent j = new Intent(SwipeLeft.this,SwipeRight.class);
         startActivity(j);
-    }
+    }*/
 }

@@ -11,10 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:foreground="@color/BtnForegroundNotActive"
+        android:backgroundTint="@color/BtnBackgroundColor"
         android:onClick="btnMeals"
         android:text="@string/meals"
         app:layout_constraintEnd_toStartOf="@+id/homeScreenButton"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,22 +24,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#51B6C8"
+        android:foreground="@color/BtnForegroundNotActive"
         android:text="@string/calculator"
         android:textColorLink="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/rightScreenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:foreground="@color/BtnForegroundNotActive"
-        android:onClick="btnHistory"
-        android:text="@string/history"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/homeScreenButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/leftScreenButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -47,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/BtnBackgroundColor"
         android:onClick="btnSettings"
         android:text="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,8 +49,9 @@
         android:id="@+id/btnCalculateInsulin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Calculate"
+        android:backgroundTint="@color/BtnBackgroundColor"
+        android:text="@string/calculate"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -67,17 +61,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <TextView
         android:id="@+id/tvInsulinAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="test"
+        app:layout_constraintBottom_toTopOf="@+id/btnCalculateInsulin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <ListView
+        android:id="@+id/LvSelectedMealsToCalc"
+        android:layout_width="412dp"
+        android:layout_height="298dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeScreenButton" />
+
+    <TextView
+        android:id="@+id/TvInfoHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clicking an item removes it"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LvSelectedMealsToCalc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

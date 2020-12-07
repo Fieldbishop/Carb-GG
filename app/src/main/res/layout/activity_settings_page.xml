@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/BtnBackgroundColor"
         android:onClick="btnSaveCoefficient"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
