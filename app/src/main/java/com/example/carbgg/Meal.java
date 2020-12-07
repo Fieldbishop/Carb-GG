@@ -61,4 +61,8 @@ public class Meal {
 
         return this.mealName + ", " + mealCarbsD + " g";
     }
+    @Override
+    public String toString() {
+        return mealName;
+    }
 }

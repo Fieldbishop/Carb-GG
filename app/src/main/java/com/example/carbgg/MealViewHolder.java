@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 class MealViewHolder extends RecyclerView.ViewHolder {
     private final TextView mealItemView;
 
@@ -28,10 +30,12 @@ class MealViewHolder extends RecyclerView.ViewHolder {
             Log.d("MEAL_NAME",singleMealName[0]);
             Log.d("MEAL_CARBS", Integer.toString(singleMealCarbs));
 
-            Intent MainActivity = new Intent(view.getContext(), MainActivity.class);
+            ListToSend.getInstance().addMeal(singleMealName[0],singleMealCarbs,"");
+
+            /*Intent MainActivity = new Intent(view.getContext(), MainActivity.class);
             MainActivity.putExtra("MEAL_NAME", singleMealName[0]);
             MainActivity.putExtra("MEAL_CARBS", singleMealCarbs);
-            view.getContext().startActivity(MainActivity);
+            view.getContext().startActivity(MainActivity);*/
         });
     }
 

@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;                                                   // values for swipe
     private TextView tv;
+    private ListView lv;
     private String defaultmsg = "Please enter meals";
 
     @Override
@@ -16,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tvInsulinAmount);
+        lv = findViewById(R.id.LvSelectedMealsToCalc);
+
+        lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames()));
 
         if (this.getIntent().getExtras() != null) {
             String mealName = this.getIntent().getStringExtra("MEAL_NAME");
@@ -26,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
             tv.setText(defaultmsg);
         }
     }
+    public void btnCalculate(View view) {
+        tv.setText("list reset");
+        ListToSend.getInstance().eraseList();
+    }
+
 
 
 
