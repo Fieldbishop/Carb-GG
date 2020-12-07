@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;                                                   // values for swipe
     private TextView tv;
     private ListView lv;
-    private String defaultmsg = "Please enter meals";
+    float totalCarbs = 0;
+    private String defaultMsg = "Please enter meals";
     ArrayAdapter<Meal> adapter;
 
     @Override
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             lv.setAdapter(adapter);
         }else{
             lv.setAdapter(null);
-            tv.setText(defaultmsg);
+            tv.setText(defaultMsg);
         }
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -41,7 +42,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void btnCalculate(View view) {
-        tv.setText("Suggested amount of insulin intake: "+"1");
+
+        for(int i=0; i<ListToSend.getInstance().getNames().size(); i++){
+            Meal mealToAdd = ListToSend.getInstance().getNames().get(i);
+            Float carbsOfMealToAdd=mealToAdd.getMealCarbs();
+            totalCarbs += carbsOfMealToAdd;
+
+            Log.d("test",String.valueOf(totalCarbs));
+        }
+        tv.setText("Suggested amount of insulin intake: "+totalCarbs);
         ListToSend.getInstance().eraseList();
     }
 

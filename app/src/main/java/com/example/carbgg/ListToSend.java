@@ -2,7 +2,7 @@ package com.example.carbgg;
 
 import java.util.ArrayList;
 
-public class ListToSend {
+public class ListToSend{
     private static ArrayList<Meal> meals;
     private static ListToSend ourInstance = new ListToSend();
 
