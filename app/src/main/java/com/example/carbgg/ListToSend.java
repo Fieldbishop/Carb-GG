@@ -7,6 +7,9 @@ public class ListToSend {
     private static ListToSend ourInstance = new ListToSend();
 
     public static ListToSend getInstance() {
+        if(ourInstance==null)
+            ourInstance=new ListToSend();
+
         return ourInstance;
     }
 

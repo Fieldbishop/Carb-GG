@@ -21,7 +21,13 @@ public class MainActivity extends AppCompatActivity {
         tv = findViewById(R.id.tvInsulinAmount);
         lv = findViewById(R.id.LvSelectedMealsToCalc);
 
-        lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames()));
+        if(ListToSend.getInstance() != null){
+            lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames()));
+        }else{
+            lv.setAdapter(null);
+            tv.setText("Please add some meals");
+        }
+
 
         if (this.getIntent().getExtras() != null) {
             String mealName = this.getIntent().getStringExtra("MEAL_NAME");
