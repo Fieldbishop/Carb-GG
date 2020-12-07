@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.view.menu.MenuView;
@@ -20,6 +21,11 @@ class MealViewHolder extends RecyclerView.ViewHolder {
     private MealViewHolder(View itemView) {
         super(itemView);
         mealItemView = itemView.findViewById(R.id.textView);
+
+        ImageButton deleteButton = itemView.findViewById(R.id.imageButtonDeleteItem);
+
+        MealRoomDatabase db = MealRoomDatabase.getDatabase(itemView.getContext());
+        MealDao mMealDao = db.mealDao();
         itemView.setOnClickListener(view -> {
             String[] singleMealName = mealItemView.getText().toString().split(", ");
             String[] singleMealCarbsText = singleMealName[1].split(" ");
@@ -32,6 +38,13 @@ class MealViewHolder extends RecyclerView.ViewHolder {
             MainActivity.putExtra("MEAL_NAME", singleMealName[0]);
             MainActivity.putExtra("MEAL_CARBS", singleMealCarbs);
             view.getContext().startActivity(MainActivity);
+        });
+
+        deleteButton.setOnClickListener(view -> {
+            String[] singleMealName = mealItemView.getText().toString().split(", ");
+            MealRoomDatabase.databaseWriteExecutor.execute(() -> {
+                mMealDao.deleteMeal(singleMealName[0]);
+            });
         });
     }
 

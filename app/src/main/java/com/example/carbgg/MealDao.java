@@ -10,8 +10,6 @@ import java.util.List;
 
 @Dao
 public interface MealDao {
-    // allowing the insert of the same meal multiple times by passing a
-    // conflict resolution strategy
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Meal meal);
 
@@ -20,4 +18,7 @@ public interface MealDao {
 
     @Query("SELECT * FROM Meal ORDER BY mealName ASC")
     LiveData<List<Meal>> getAlphabetizedMeals();
+
+    @Query("DELETE FROM Meal WHERE mealName = :name")
+    void deleteMeal(String name);
 }
