@@ -80,6 +80,8 @@ public class SwipeLeft extends AppCompatActivity {
 
 
 
+
+
     public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:

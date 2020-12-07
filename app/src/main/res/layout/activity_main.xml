@@ -86,7 +86,7 @@
         android:id="@+id/TvInfoHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clicking an item removes it"
+        android:text="Clicking on an item removes it"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
