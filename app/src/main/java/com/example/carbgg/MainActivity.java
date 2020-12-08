@@ -10,6 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;                                                   // values for swipe
     private TextView tv;
@@ -47,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
             Meal mealToAdd = ListToSend.getInstance().getNames().get(i);
             Float carbsOfMealToAdd=mealToAdd.getMealCarbs();
             totalCarbs += carbsOfMealToAdd;
-
             Log.d("test",String.valueOf(totalCarbs));
+
         }
         tv.setText("Suggested amount of insulin intake: "+totalCarbs);
         ListToSend.getInstance().eraseList();
