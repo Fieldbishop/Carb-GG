@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 public class SettingsPage extends AppCompatActivity {
     private EditText et;
-    public final String savefile = "configs.txt";
+    public final String savefile = "configs";
     public final String insulinEfficiencyKey = "inEfKey";
     protected float insulinEfficiency;
 

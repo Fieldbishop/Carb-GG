@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,7 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -25,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     float totalCarbs = 0, insulinEfficiency = 1;
     private String defaultMsg = "Please enter meals";
     ArrayAdapter<Meal> adapter;
+    ArrayList<DataPointToSave> listForLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         tv = findViewById(R.id.tvInsulinAmount);
         lv = findViewById(R.id.LvSelectedMealsToCalc);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames());
+        loadHistory();
 
         if(ListToSend.getInstance() != null){
             lv.setAdapter(adapter);
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        SharedPreferences prefGet = getSharedPreferences("configs.txt" , Context.MODE_PRIVATE);
+        SharedPreferences prefGet = getSharedPreferences("configs" , Context.MODE_PRIVATE);
         float insulinEfficiency = prefGet.getFloat("inEfKey", Context.MODE_PRIVATE);
         float insulinAmount = (totalCarbs / 10) * insulinEfficiency;
         if (insulinAmount == 0){
@@ -69,11 +78,34 @@ public class MainActivity extends AppCompatActivity {
         }
         String insulinDisplay = Float.toString(insulinAmount);
         tv.setText("Suggested amount of insulin intake: "+ insulinDisplay+ " units");
-
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         SingletonClassHistory.getInstance().addNew(date,totalCarbs);
+        saveHistory();
         ListToSend.getInstance().eraseList();
     }
+    private void saveHistory(){
+        SharedPreferences historyPut = getSharedPreferences("History",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = historyPut.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(SingletonClassHistory.getInstance().getAll());
+        editor.putString("HistoryKey",json);
+        editor.apply();
+    }
+    private void loadHistory(){
+        SharedPreferences historyGet = getSharedPreferences("History",Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = historyGet.getString("HistoryKey", null);
+        Type type = new TypeToken<ArrayList<DataPointToSave>>() {}.getType();
+        listForLoading = gson.fromJson(json, type);
+        if(listForLoading == null){
+            listForLoading = new ArrayList<>();
+        }
+        for(int i = 0; i<listForLoading.size();i++){
+            DataPointToSave tempData = listForLoading.get(i);
+            SingletonClassHistory.getInstance().addNew(tempData.getTime(),tempData.getCarbs());
+        }
+    }
+
 
 
 
