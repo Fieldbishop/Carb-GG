@@ -61,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
             insulinAmount = (totalCarbs / 10) * 1;
         }
         String insulinDisplay = Float.toString(insulinAmount);
-
-        tv.setText("Suggested amount of insulin intake: "+ insulinDisplay);
+        tv.setText("Suggested amount of insulin intake: "+ insulinDisplay+ " units");
         ListToSend.getInstance().eraseList();
     }
 
