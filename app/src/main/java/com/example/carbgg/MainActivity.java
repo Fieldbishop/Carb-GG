@@ -33,15 +33,21 @@ public class MainActivity extends AppCompatActivity {
     private String defaultMsg = "Please enter meals";
     ArrayAdapter<Meal> adapter;
     ArrayList<DataPointToSave> listForLoading;
+    private static boolean flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(flag){
+            loadHistory();
+        }
+        flag=false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tvInsulinAmount);
         lv = findViewById(R.id.LvSelectedMealsToCalc);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames());
-        loadHistory();
+
+
 
         if(ListToSend.getInstance() != null){
             lv.setAdapter(adapter);
@@ -58,18 +64,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
-    public void btnCalculate(View view) {
 
+    public void btnCalculate(View view) {
         for(int i=0; i<ListToSend.getInstance().getNames().size(); i++){
             Meal mealToAdd = ListToSend.getInstance().getNames().get(i);
             Float carbsOfMealToAdd=mealToAdd.getMealCarbs();
             totalCarbs += carbsOfMealToAdd;
             Log.d("test",String.valueOf(totalCarbs));
-
         }
-
         SharedPreferences prefGet = getSharedPreferences("configs" , Context.MODE_PRIVATE);
         float insulinEfficiency = prefGet.getFloat("inEfKey", Context.MODE_PRIVATE);
         float insulinAmount = (totalCarbs / 10) * insulinEfficiency;
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         saveHistory();
         ListToSend.getInstance().eraseList();
     }
+
     private void saveHistory(){
         SharedPreferences historyPut = getSharedPreferences("History",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = historyPut.edit();
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("HistoryKey",json);
         editor.apply();
     }
+
     private void loadHistory(){
         SharedPreferences historyGet = getSharedPreferences("History",Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -105,30 +110,6 @@ public class MainActivity extends AppCompatActivity {
             SingletonClassHistory.getInstance().addNew(tempData.getTime(),tempData.getCarbs());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
         switch (touchevent.getAction()) {
