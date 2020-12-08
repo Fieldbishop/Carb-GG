@@ -66,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         }
         String insulinDisplay = Float.toString(insulinAmount);
         tv.setText("Suggested amount of insulin intake: "+ insulinDisplay+ " units");
+
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        SingletonClassHistory.getInstance().addNew(date,totalCarbs);
         ListToSend.getInstance().eraseList();
     }
 

@@ -2,8 +2,11 @@ package com.example.carbgg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -14,6 +17,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SwipeRight extends AppCompatActivity {
 
@@ -33,14 +38,20 @@ public class SwipeRight extends AppCompatActivity {
         chart.setData(data);
         chart.invalidate();
     }
+    
 
     private ArrayList<Entry> dataSet1(){
-        ArrayList<Entry> pointdata = new ArrayList<Entry>();
-        pointdata.add(new Entry(0,20));
-        pointdata.add(new Entry(1,30));
-        pointdata.add(new Entry(2,10));
-        pointdata.add(new Entry(3,40));
 
+        ArrayList<Entry> pointdata = new ArrayList<Entry>();
+        ListToSend.getInstance().getNames();
+
+        for(int i=0; i<SingletonClassHistory.getInstance().getAll().size(); i++){
+            DataPointToSave datapoint = SingletonClassHistory.getInstance().getAll().get(i);
+            Float carbs=datapoint.getCarbs();
+            String date=datapoint.getTime();
+            pointdata.add(new Entry(i,carbs));
+
+        }
         return pointdata;
     }
 
