@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             insulinAmount = (totalCarbs / 10) * 1;
         }
         String insulinDisplay = Float.toString(insulinAmount);
-        tv.setText("Suggested amount of insulin intake: "+ insulinDisplay+ " units");
+        tv.setText("Suggested insulin intake: "+ insulinDisplay+ " units");
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         SingletonClassHistory.getInstance().addNew(date,totalCarbs);
         saveHistory();
