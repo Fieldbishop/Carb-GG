@@ -1,6 +1,9 @@
 package com.example.carbgg;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;                                                   // values for swipe
     private TextView tv;
     private ListView lv;
-    float totalCarbs = 0;
+    float totalCarbs = 0, insulinEfficiency = 1;
     private String defaultMsg = "Please enter meals";
     ArrayAdapter<Meal> adapter;
 
@@ -54,7 +57,15 @@ public class MainActivity extends AppCompatActivity {
             Log.d("test",String.valueOf(totalCarbs));
 
         }
-        tv.setText("Suggested amount of insulin intake: "+totalCarbs);
+
+        SharedPreferences prefGet = getSharedPreferences("configs.txt" , Context.MODE_PRIVATE);
+        float insulinEfficiency = prefGet.getFloat("inEfKey", Context.MODE_PRIVATE);
+        float insulinAmount = (totalCarbs / 10) * insulinEfficiency;
+        if (insulinAmount == 0){
+            insulinAmount = (totalCarbs / 10) * 1;
+        }
+        String insulinDisplay = Float.toString(insulinAmount);
+        tv.setText("Suggested amount of insulin intake: "+ insulinDisplay+ " units");
         ListToSend.getInstance().eraseList();
     }
 
