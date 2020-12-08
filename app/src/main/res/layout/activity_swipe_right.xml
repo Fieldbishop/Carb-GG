@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:foreground="@color/BtnForegroundNotActive"
+        android:backgroundTint="@color/BtnBackgroundColor"
         android:onClick="btnMeals"
         android:text="@string/meals"
         app:layout_constraintEnd_toStartOf="@+id/homeScreenButton"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:foreground="@color/BtnForegroundNotActive"
+        android:backgroundTint="@color/BtnBackgroundColor"
         android:onClick="btnCalculator"
         android:text="@string/calculator"
         android:textColorLink="@color/teal_200"
@@ -33,9 +33,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:foreground="@color/BtnForegroundNotActive"
+        android:backgroundTint="@color/BtnBackgroundColor"
         android:text="@string/history"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/homeScreenButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeScreenButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

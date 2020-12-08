@@ -7,15 +7,66 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+
+import java.util.ArrayList;
+
 public class SwipeRight extends AppCompatActivity {
 
     float x1, x2, y1, y2;                                                   // values for swipe
+    LineChart chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_right);
+        chart = (LineChart) findViewById(R.id.chart);
+        LineDataSet LineDataSet1 = new LineDataSet(dataSet1(),"Data Set 1");
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(LineDataSet1);
+
+        LineData data = new LineData(dataSets);
+        chart.setData(data);
+        chart.invalidate();
     }
+
+    private ArrayList<Entry> dataSet1(){
+        ArrayList<Entry> pointdata = new ArrayList<Entry>();
+        pointdata.add(new Entry(0,20));
+        pointdata.add(new Entry(1,30));
+        pointdata.add(new Entry(2,10));
+        pointdata.add(new Entry(3,40));
+
+        return pointdata;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:

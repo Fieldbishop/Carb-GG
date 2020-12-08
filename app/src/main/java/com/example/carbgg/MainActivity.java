@@ -90,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent i = new Intent(MainActivity.this, SwipeLeft.class);
                     startActivity(i);
                     overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-                /*}else if(x2 < x1){
+                }else if(x2 < x1){
                 Intent i = new Intent(MainActivity.this, SwipeRight.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);*/
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }break;
         }
         return false;
@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(j);
     }
 
-    /*public void btnHistory(View view){
+    public void btnHistory(View view){
         Intent j = new Intent(MainActivity.this,SwipeRight.class);
         startActivity(j);
-    }*/
+    }
 }

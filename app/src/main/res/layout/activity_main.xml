@@ -20,6 +20,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/rightScreenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/BtnBackgroundColor"
+        android:onClick="btnHistory"
+        android:text="@string/history"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/homeScreenButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/homeScreenButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +41,7 @@
         android:foreground="@color/BtnForegroundNotActive"
         android:text="@string/calculator"
         android:textColorLink="@color/teal_200"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightScreenButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/leftScreenButton"
         app:layout_constraintTop_toTopOf="parent" />

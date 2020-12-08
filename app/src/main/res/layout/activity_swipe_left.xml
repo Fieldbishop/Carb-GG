@@ -18,6 +18,20 @@
         tools:listitem="@layout/recyclerview_item" />
 
     <Button
+        android:id="@+id/homeScreenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/BtnBackgroundColor"
+        android:onClick="btnCalculator"
+        android:text="@string/calculator"
+        android:textColorLink="@color/teal_200"
+        app:layout_constraintEnd_toStartOf="@+id/rightScreenButton2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/leftScreenButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/leftScreenButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,17 +45,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/homeScreenButton"
+        android:id="@+id/rightScreenButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/BtnBackgroundColor"
-        android:onClick="btnCalculator"
-        android:text="@string/calculator"
-        android:textColorLink="@color/teal_200"
+        android:onClick="btnHistory"
+        android:text="@string/history"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/leftScreenButton"
+        app:layout_constraintStart_toEndOf="@+id/homeScreenButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
