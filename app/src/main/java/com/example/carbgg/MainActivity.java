@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefGet = getSharedPreferences("configs.txt" , Context.MODE_PRIVATE);
         float insulinEfficiency = prefGet.getFloat("inEfKey", Context.MODE_PRIVATE);
         float insulinAmount = (totalCarbs / 10) * insulinEfficiency;
+        if (insulinAmount == 0){
+            insulinAmount = (totalCarbs / 10) * 1;
+        }
         String insulinDisplay = Float.toString(insulinAmount);
 
         tv.setText("Suggested amount of insulin intake: "+ insulinDisplay);
