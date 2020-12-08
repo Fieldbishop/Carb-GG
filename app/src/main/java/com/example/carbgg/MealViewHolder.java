@@ -1,10 +1,5 @@
 package com.example.carbgg;
 
-import android.app.Application;
-import android.content.ClipData;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
 
 class MealViewHolder extends RecyclerView.ViewHolder {
     private final TextView mealItemView;
@@ -37,11 +30,6 @@ class MealViewHolder extends RecyclerView.ViewHolder {
             Log.d("MEAL_CARBS", Integer.toString(singleMealCarbs));
 
             ListToSend.getInstance().addMeal(singleMealName[0],singleMealCarbs,"");
-
-            /*Intent MainActivity = new Intent(view.getContext(), MainActivity.class);
-            MainActivity.putExtra("MEAL_NAME", singleMealName[0]);
-            MainActivity.putExtra("MEAL_CARBS", singleMealCarbs);
-            view.getContext().startActivity(MainActivity);*/
         });
 
         deleteButton.setOnClickListener(view -> {

@@ -1,9 +1,5 @@
 package com.example.carbgg;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.PrimaryKey;
-
 public class DataPointToSave {
     private Float calculatedCarbs;
     private String dateOfCarbs;

@@ -2,12 +2,9 @@ package com.example.carbgg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -19,17 +16,12 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class SwipeRight extends AppCompatActivity {
 
-    float x1, x2, y1, y2;                                                   // values for swipe
+    float x1, x2, y1, y2;
     LineChart chart;
 
     @Override
@@ -88,32 +80,7 @@ public class SwipeRight extends AppCompatActivity {
         return pointdata;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
+    public boolean onTouchEvent(MotionEvent touchevent){
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchevent.getX();

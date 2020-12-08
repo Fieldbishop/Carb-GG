@@ -22,13 +22,6 @@ public class Meal {
     @ColumnInfo(name = "isFavourite")
     private boolean isFavourite;
 
-    /*
-    // mahd. lisattavat
-
-    private int mealCarbsPer;
-    private int mealSize;
-    */
-
     public Meal(@NonNull String mealName, @NonNull float mealCarbs, String mealDescription) {
         this.mealName = mealName;
         this.mealCarbs = mealCarbs;

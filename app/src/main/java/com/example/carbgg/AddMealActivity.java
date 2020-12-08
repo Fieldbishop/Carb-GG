@@ -11,8 +11,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.material.snackbar.Snackbar;
-
 public class AddMealActivity extends AppCompatActivity {
 
     @Override

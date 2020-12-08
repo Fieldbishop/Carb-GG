@@ -1,7 +1,6 @@
 package com.example.carbgg;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,11 +14,10 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.List;
 
 public class SwipeLeft extends AppCompatActivity {
 
-    float x1, x2, y1, y2;                                                   // values for swipe
+    float x1, x2, y1, y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,39 +48,7 @@ public class SwipeLeft extends AppCompatActivity {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
+    public boolean onTouchEvent(MotionEvent touchevent){
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchevent.getX();

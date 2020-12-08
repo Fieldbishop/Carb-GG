@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,16 +16,14 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    float x1, x2, y1, y2;                                                   // values for swipe
+    float x1, x2, y1, y2;
     private TextView tv;
     private ListView lv;
     float totalCarbs = 0, insulinEfficiency = 1;
@@ -111,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean onTouchEvent(MotionEvent touchevent){                    //ghetto swipe 2001
+    public boolean onTouchEvent(MotionEvent touchevent){
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 x1 = touchevent.getX();
