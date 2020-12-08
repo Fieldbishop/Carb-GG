@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListToSend.getInstance().removeOne(position);
-                adapter.notifyDataSetChanged();
+                if(ListToSend.getInstance().getNames().size() > 0) {
+                    ListToSend.getInstance().removeOne(position);
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
 
