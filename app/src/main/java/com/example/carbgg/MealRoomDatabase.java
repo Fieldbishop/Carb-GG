@@ -42,6 +42,10 @@ public abstract class MealRoomDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 MealDao dao = INSTANCE.mealDao();
                 dao.deleteAll();
+                Meal milk_glass = new Meal ("Milk glass", 10, "");
+                dao.insert(milk_glass);
+                Meal yoghourt = new Meal ("Yoghourt can", 25, "");
+                dao.insert(yoghourt);
                 Meal bread_regular = new Meal ("Bread", 15, "");
                 dao.insert(bread_regular);
                 Meal bread_roll_regular = new Meal ("Bread roll", 30, "");
