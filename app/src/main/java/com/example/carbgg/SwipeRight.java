@@ -5,15 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,21 +41,47 @@ public class SwipeRight extends AppCompatActivity {
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(LineDataSet1);
 
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.TOP);
+        xAxis.setTextSize(10f);
+        xAxis.setTextColor(Color.BLACK);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(false);
+
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(getDate()));
+
+        chart.setNoDataText("No data points");
+        chart.setNoDataTextColor(Color.BLACK);
+
+        Description desc = new Description();
+        desc.setText("Amount of carbohydrates consumed");
+        desc.setTextColor(Color.BLACK);
+        desc.setTextSize(15);
+        chart.setDescription(desc);
+
         LineData data = new LineData(dataSets);
         chart.setData(data);
         chart.invalidate();
     }
-    
+
+    private ArrayList<String> getDate(){
+        ArrayList<String> label = new ArrayList<>();
+        ListToSend.getInstance().getNames();
+        for (int i = 0; i < SingletonClassHistory.getInstance().getAll().size(); i++) {
+            DataPointToSave dataPoint2 = SingletonClassHistory.getInstance().getAll().get(i);
+            String date = dataPoint2.getTime();
+            label.add(date);
+        }
+        return label;
+    }
 
     private ArrayList<Entry> dataSet1(){
-
         ArrayList<Entry> pointdata = new ArrayList<Entry>();
         ListToSend.getInstance().getNames();
 
         for(int i=0; i<SingletonClassHistory.getInstance().getAll().size(); i++){
             DataPointToSave datapoint = SingletonClassHistory.getInstance().getAll().get(i);
             Float carbs=datapoint.getCarbs();
-            String date=datapoint.getTime();
             pointdata.add(new Entry(i,carbs));
 
         }
