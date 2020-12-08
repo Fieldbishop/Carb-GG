@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("test", "id=" + id);
                 ListToSend.getInstance().removeOne(position);
                 adapter.notifyDataSetChanged();
             }
         });
+
     }
     public void btnCalculate(View view) {
 
