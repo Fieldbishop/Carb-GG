@@ -19,11 +19,17 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 
+/**
+ * History tab showing carbohydrates consumed per meal and date
+ */
 public class SwipeRight extends AppCompatActivity {
 
     float x1, x2, y1, y2;
     LineChart chart;
 
+    /**
+     * Sets up line chart
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,11 @@ public class SwipeRight extends AppCompatActivity {
         chart.invalidate();
     }
 
+    /**
+     * Extracts dates from objects in singleton array "SingletonClassHistory" and creates a label
+     * for using on x-axis on the line chart
+     * @return dataset of dates
+     */
     private ArrayList<String> getDate(){
         ArrayList<String> label = new ArrayList<>();
         ListToSend.getInstance().getNames();
@@ -67,6 +78,11 @@ public class SwipeRight extends AppCompatActivity {
         return label;
     }
 
+    /**
+     * Extracts amounts of carbohydrates from objects in singleton array "SingletonClassHistory"
+     * and adds them to an arraylist for usage in the y-axis of the graph
+     * @return arraylist of carbohydrate amounts
+     */
     private ArrayList<Entry> dataSet1(){
         ArrayList<Entry> pointdata = new ArrayList<Entry>();
         ListToSend.getInstance().getNames();
@@ -80,6 +96,11 @@ public class SwipeRight extends AppCompatActivity {
         return pointdata;
     }
 
+    /**
+     * Touch event with slide animations for swiping between activities
+     * @param touchevent
+     * @return
+     */
     public boolean onTouchEvent(MotionEvent touchevent){
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -98,10 +119,18 @@ public class SwipeRight extends AppCompatActivity {
         }
         return false;
     }
+    /**
+     * Button for changing activity
+     * @param view
+     */
     public void btnCalculator(View view){
         Intent j = new Intent(SwipeRight.this,MainActivity.class);
         startActivity(j);
     }
+    /**
+     * Button for changing activity
+     * @param view
+     */
     public void btnMeals(View view){
         Intent j = new Intent(SwipeRight.this,SwipeLeft.class);
         startActivity(j);

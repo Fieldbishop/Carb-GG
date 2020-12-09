@@ -52,6 +52,11 @@ public class SwipeLeft extends AppCompatActivity {
         }
     }
 
+    /**
+     * Touch event with slide animations for swiping between activities
+     * @param touchevent
+     * @return
+     */
     public boolean onTouchEvent(MotionEvent touchevent){
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -70,10 +75,18 @@ public class SwipeLeft extends AppCompatActivity {
         }
         return false;
     }
+    /**
+     * Button for changing activity
+     * @param view
+     */
     public void btnCalculator(View view){
         Intent j = new Intent(SwipeLeft.this,MainActivity.class);
         startActivity(j);
     }
+    /**
+     * Button for changing activity
+     * @param view
+     */
     public void btnHistory(View view){
         Intent j = new Intent(SwipeLeft.this,SwipeRight.class);
         startActivity(j);

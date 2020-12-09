@@ -69,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets total Carbs from singleton array ListToSend, insulinEfficiency from shared preferences and calculates an insulin amount to be displayed on a textview with these numbers.
-     * Saves data into shared preferences for usage in history tab
+     * Gets total carbohydrates from singleton array "ListToSend", insulinEfficiency from shared preferences and calculates an insulin amount to be displayed on a textview with these numbers.
+     * Saves an arraylist of objects containing date and amount of carbohydrates calculated into shared preferences for usage in history tab.
+     * Clears the arraylist that was used to get meal data into the calculation
      * @param view
      */
     public void btnCalculate(View view) {
@@ -95,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Saves an arraylist of objects "DataPointToSave" containing dates of data samples and amount of carbohydrates
-     * into shared preferences for loading them at at startup
+     * Saves an arraylist of objects "DataPointToSave" containing dates of data samples and amount of carbohydrates into shared preferences
      */
     private void saveHistory(){
         SharedPreferences historyPut = getSharedPreferences("History",Context.MODE_PRIVATE);
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Loads a singleton arraylist of objects "DataPointToSave" containing dates of data samples and amount of carbohydrates
+     * Loads an arraylist of objects "DataPointToSave" containing dates of data samples and amount of carbohydrates for showing in history tab
      */
     private void loadHistory(){
         SharedPreferences historyGet = getSharedPreferences("History",Context.MODE_PRIVATE);
