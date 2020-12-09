@@ -15,5 +15,5 @@
     <string name="calculate">Calculate</string>
     <string name="clicking_on_an_item_removes_it">Clicking on an item removes it</string>
     <string name="add_meal">Add meal</string>
-    <string name="please_enter_your_insulin_coefficient">Please enter your insulin coefficient:</string>
+    <string name="please_enter_your_insulin_coefficient">Please enter your insulin coefficient per 10g of carbohydrates:</string>
 </resources>
