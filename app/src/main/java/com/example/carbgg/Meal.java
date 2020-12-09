@@ -11,6 +11,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Meal")
 public class Meal {
+
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "mealName")
@@ -29,6 +30,9 @@ public class Meal {
     public Meal(@NonNull String mealName, @NonNull float mealCarbs, String mealDescription) {
         this.mealName = mealName;
         this.mealCarbs = mealCarbs;
+        /**
+         * break stuff
+         */
         this.mealDescription = mealDescription;
         this.isFavourite = false;
     }

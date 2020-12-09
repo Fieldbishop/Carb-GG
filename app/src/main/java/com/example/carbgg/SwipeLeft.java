@@ -15,14 +15,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 /**
- * Meal list. Link to add new meal.
+ * Meal list. Link to add a new meal.
  */
 
 public class SwipeLeft extends AppCompatActivity {
     float x1, x2, y1, y2;
 
     /**
-     * Sets Meals to RecyclerView. Shows Snackbar on successful Meal Add.
+     * Sets Meals to RecyclerView and shows them in a list. Shows a Snackbar on successful Meal Add.
      */
 
     @Override
@@ -58,6 +58,7 @@ public class SwipeLeft extends AppCompatActivity {
                 x1 = touchevent.getX();
                 y1 = touchevent.getY();
                 break;
+
             case MotionEvent.ACTION_UP:
                 x2 = touchevent.getX();
                 y2 = touchevent.getY();

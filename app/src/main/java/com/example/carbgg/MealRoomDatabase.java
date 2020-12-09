@@ -12,15 +12,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Creates database
+ * Creates database.
  */
 
 @Database(entities = {Meal.class}, version = 3, exportSchema = false)
 public abstract class MealRoomDatabase extends RoomDatabase {
     /**
-     * Database creation
+     * Database creation.
      *
-     * @return returns database instance
+     * @return Returns the database instance.
      */
     public abstract MealDao mealDao();
     private static volatile MealRoomDatabase INSTANCE;
@@ -42,8 +42,9 @@ public abstract class MealRoomDatabase extends RoomDatabase {
     }
 
     /**
-     * Creates database if one does not exist and populates it with entries
+     * Creates database if one does not exist and populates it with entries.
      */
+
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

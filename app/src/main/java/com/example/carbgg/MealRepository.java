@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 /**
- * Creates LiveDataList form database entries
+ * Creates LiveDataList from database entries
  */
 
 class MealRepository {

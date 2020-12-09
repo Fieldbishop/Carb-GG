@@ -9,14 +9,15 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
 class MealViewHolder extends RecyclerView.ViewHolder {
     private final TextView mealItemView;
 
     /**
+     * Sends single Meal's information to ListToSend when user clicks the row. Access to Meal object
+     * is restricted so the information is gathered from row's text. Deletes selected Meal when user
+     * clicks the delete button.
      *
-     *
-     * @param itemView textView to show Meal's toString.
+     * @param itemView Shows Meal's toString.
      */
 
     private MealViewHolder(View itemView) {
