@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets total carbohydrates from singleton array "ListToSend", insulinEfficiency from shared preferences calls
-     * class InsulinCalculator with these values to calculate suggested insulin amount
+     * Gets total carbohydrates from singleton array "ListToSend", insulinEfficiency from shared preferences, calls
+     * InsulinCalculator-class with these values to calculate suggested insulin amount and String presentation
      * Saves an arraylist of objects containing date and amount of carbohydrates calculated into shared preferences for usage in history tab.
      * Clears the arraylist that was used to get meal data into the calculation
      * @param view
