@@ -8,6 +8,10 @@ import androidx.room.Query;
 
 import java.util.List;
 
+/**
+ * Database access points
+ */
+
 @Dao
 public interface MealDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)

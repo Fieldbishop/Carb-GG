@@ -14,10 +14,16 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * Meal list. Link to add new meal.
+ */
 
 public class SwipeLeft extends AppCompatActivity {
-
     float x1, x2, y1, y2;
+
+    /**
+     * Sets Meals to RecyclerView. Shows Snackbar on successful Meal Add.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +32,9 @@ public class SwipeLeft extends AppCompatActivity {
         setContentView(R.layout.activity_swipe_left);
 
         FloatingActionButton newMeal = findViewById(R.id.floatingActionButtonAddMeal);
-        newMeal.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent AddMealActivity = new Intent(SwipeLeft.this, com.example.carbgg.AddMealActivity.class);
-                startActivity(AddMealActivity);
-            }
+        newMeal.setOnClickListener(v -> {
+            Intent AddMealActivity = new Intent(SwipeLeft.this, com.example.carbgg.AddMealActivity.class);
+            startActivity(AddMealActivity);
         });
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);

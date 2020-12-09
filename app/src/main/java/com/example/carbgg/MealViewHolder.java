@@ -13,6 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 class MealViewHolder extends RecyclerView.ViewHolder {
     private final TextView mealItemView;
 
+    /**
+     *
+     *
+     * @param itemView textView to show Meal's toString.
+     */
+
     private MealViewHolder(View itemView) {
         super(itemView);
         mealItemView = itemView.findViewById(R.id.textView);

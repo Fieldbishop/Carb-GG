@@ -11,11 +11,18 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Creates database
+ */
+
 @Database(entities = {Meal.class}, version = 3, exportSchema = false)
 public abstract class MealRoomDatabase extends RoomDatabase {
-
+    /**
+     * Database creation
+     *
+     * @return returns database instance
+     */
     public abstract MealDao mealDao();
-
     private static volatile MealRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -34,6 +41,9 @@ public abstract class MealRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+    /**
+     * Creates database if one does not exist and populates it with entries
+     */
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

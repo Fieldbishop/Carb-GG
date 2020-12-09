@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         lv = findViewById(R.id.LvSelectedMealsToCalc);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ListToSend.getInstance().getNames());
 
-
-
         if(ListToSend.getInstance() != null){
             lv.setAdapter(adapter);
         }else{

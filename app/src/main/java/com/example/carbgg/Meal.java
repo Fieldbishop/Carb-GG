@@ -5,6 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Defines database objects
+ */
+
 @Entity(tableName = "Meal")
 public class Meal {
     @PrimaryKey
@@ -54,6 +58,7 @@ public class Meal {
 
         return this.mealName + ", " + mealCarbsD + " g";
     }
+
     @Override
     public String toString() {
         return mealName;

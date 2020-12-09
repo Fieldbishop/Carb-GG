@@ -6,24 +6,20 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-class MealRepository {
+/**
+ * Creates LiveDataList form database entries
+ */
 
-    private MealDao mMealDao;
-    private LiveData<List<Meal>> AllMeals;
+class MealRepository {
+    private final LiveData<List<Meal>> AllMeals;
 
     MealRepository(Application application) {
         MealRoomDatabase db = MealRoomDatabase.getDatabase(application);
-        mMealDao = db.mealDao();
+        MealDao mMealDao = db.mealDao();
         AllMeals = mMealDao.getAlphabetizedMeals();
     }
 
     LiveData<List<Meal>> getAllMeals() {
         return AllMeals;
-    }
-
-    public void insert(Meal meal) {
-        MealRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mMealDao.insert(meal);
-        });
     }
 }

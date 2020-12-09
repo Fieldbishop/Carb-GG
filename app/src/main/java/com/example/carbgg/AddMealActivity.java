@@ -11,14 +11,25 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Objects;
+
+/**
+ * Adds meal to database
+ */
+
 public class AddMealActivity extends AppCompatActivity {
+
+    /**
+     * Creates the page layout. Helps user to fill out the forms by giving feedback on missing items
+     * etc. Adds meal to database. Sends user back to previous page after hitting "Submit".
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meal);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
         EditText editTextMealName = findViewById(R.id.editTextMealName);
@@ -53,28 +64,16 @@ public class AddMealActivity extends AppCompatActivity {
                     mMealDao.insert(meal);
                 });
 
-                clearAll();
-
-                Intent AllMealsActivity = new Intent(AddMealActivity.this, SwipeLeft.class);
-                AllMealsActivity.putExtra("SUCCESS", 1);
-                startActivity(AllMealsActivity);
+                Intent SwipeLeftActivity = new Intent(AddMealActivity.this, SwipeLeft.class);
+                SwipeLeftActivity.putExtra("SUCCESS", 1);
+                startActivity(SwipeLeftActivity);
             }
         });
     }
 
-    public void clearAll() {
-        EditText editTextMealName = findViewById(R.id.editTextMealName);
-        EditText editTextMealCarbs = findViewById(R.id.editTextMealCarbs);
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        editTextMealName.clearFocus();
-        editTextMealCarbs.clearFocus();
-
-        editTextMealName.setText("");
-        editTextMealCarbs.setText("");
-
-        inputMethodManager.hideSoftInputFromWindow(editTextMealCarbs.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-    }
+    /**
+     * Returns the user to previous page.
+     */
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -24,7 +24,6 @@ public class MealListAdapter extends ListAdapter<Meal, MealViewHolder> {
     }
 
     static class MealDiff extends DiffUtil.ItemCallback<Meal> {
-
         @Override
         public boolean areItemsTheSame(@NonNull Meal oldItem, @NonNull Meal newItem) {
             return oldItem == newItem;
