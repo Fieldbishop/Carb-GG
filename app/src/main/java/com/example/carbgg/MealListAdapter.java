@@ -8,6 +8,13 @@ import androidx.recyclerview.widget.ListAdapter;
 
 public class MealListAdapter extends ListAdapter<Meal, MealViewHolder> {
 
+    /**
+     * Makes the MealList show instant updates.
+     * @param diffCallback "Callback that informs <code>ArrayObjectAdapter</code> how to compute list
+     *                     updates."
+     *                     <a href="https://developer.android.com/reference/androidx/leanback/widget/DiffCallback">
+     *                     Android Documentation</a>
+     */
     public MealListAdapter(@NonNull DiffUtil.ItemCallback<Meal> diffCallback) {
         super(diffCallback);
     }
@@ -17,12 +24,18 @@ public class MealListAdapter extends ListAdapter<Meal, MealViewHolder> {
         return MealViewHolder.create(parent);
     }
 
+    /**
+     * Gets the current Meal object and binds it to holder.
+     */
     @Override
     public void onBindViewHolder(MealViewHolder holder, int position) {
         Meal current = getItem(position);
         holder.bind(current.getMeal());
     }
 
+    /**
+     * Updates list instantly according to changes.
+     */
     static class MealDiff extends DiffUtil.ItemCallback<Meal> {
         @Override
         public boolean areItemsTheSame(@NonNull Meal oldItem, @NonNull Meal newItem) {
