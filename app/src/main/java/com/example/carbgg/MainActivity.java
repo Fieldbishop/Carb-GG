@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Home activity of the app
+ */
 public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;
     private TextView tv;
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<DataPointToSave> listForLoading;
     private static boolean flag = true;
 
+    /**
+     * Loads history data from shared preferences only once per starting of the app and sets up xml elements to be used
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if(flag){
@@ -61,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets total Carbs from singleton array ListToSend, insulinEfficiency from shared preferences and calculates an insulin amount to be displayed on a textview with these numbers.
+     * Saves data into shared preferences for usage in history tab
+     * @param view
+     */
     public void btnCalculate(View view) {
         for(int i=0; i<ListToSend.getInstance().getNames().size(); i++){
             Meal mealToAdd = ListToSend.getInstance().getNames().get(i);
@@ -82,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         ListToSend.getInstance().eraseList();
     }
 
+    /**
+     * Saves an arraylist of objects "DataPointToSave" containing dates of data samples and amount of carbohydrates
+     * into shared preferences for loading them at at startup
+     */
     private void saveHistory(){
         SharedPreferences historyPut = getSharedPreferences("History",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = historyPut.edit();
@@ -91,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     * Loads a singleton arraylist of objects "DataPointToSave" containing dates of data samples and amount of carbohydrates
+     */
     private void loadHistory(){
         SharedPreferences historyGet = getSharedPreferences("History",Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -106,6 +125,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Touch event with slide animations for swiping between activities
+     * @param touchevent
+     * @return
+     */
     public boolean onTouchEvent(MotionEvent touchevent){
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -128,16 +152,28 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Button for changing activity
+     * @param view
+     */
     public void btnSettings(View view) {
         Intent j = new Intent(MainActivity.this,SettingsPage.class);
         startActivity(j);
     }
 
+    /**
+     * Button for changing activity
+     * @param view
+     */
     public void btnMeals(View view){
         Intent j = new Intent(MainActivity.this,SwipeLeft.class);
         startActivity(j);
     }
 
+    /**
+     * Button for changing activity
+     * @param view
+     */
     public void btnHistory(View view){
         Intent j = new Intent(MainActivity.this,SwipeRight.class);
         startActivity(j);
