@@ -28,6 +28,13 @@ public class Meal {
     @ColumnInfo(name = "isFavourite")
     private boolean isFavourite;
 
+    /**
+     *
+     * @param mealName Name of the meal and the primary key for database row.
+     * @param mealCarbs Meal carbohydrates.
+     * @param mealDescription Not currently used. Can be left blank.
+     */
+
     public Meal(@NonNull String mealName, @NonNull float mealCarbs, String mealDescription) {
         this.mealName = mealName;
         this.mealCarbs = mealCarbs;
@@ -35,14 +42,20 @@ public class Meal {
         this.isFavourite = false;
     }
 
-    public void setIsFavourite (boolean isFavourite) {
-        this.isFavourite = isFavourite;
-    }
+    /**
+     * Gets mealName as is.
+     * @return Returns mealName.
+     */
 
     @NonNull
     public String getMealName() {
         return this.mealName;
     }
+
+    /**
+     * Gets mealCarbs as is.
+     * @return Returns mealCarbs.
+     */
 
     @NonNull
     public Float getMealCarbs() {
@@ -53,15 +66,21 @@ public class Meal {
         return this.mealDescription;
     }
 
-    public boolean getIsFavourite() {
-        return this.isFavourite;
-    }
+    /**
+     * Gets mealName as is and formats mealCarbs to string and strips decimals.
+     * @return Returns mealName and formatted mealCarbs.
+     */
 
     public String getMeal() {
         String mealCarbsD = String.format("%.0f", this.mealCarbs);
 
         return this.mealName + ", " + mealCarbsD + " g";
     }
+
+    /**
+     * Shows mealName as is.
+     * @return Returns mealName.
+     */
 
     @NonNull
     @Override
