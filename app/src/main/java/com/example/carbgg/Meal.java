@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 /**
- * Defines database objects
+ * Defines the Meal object and annotate it as a database object.
  * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 
