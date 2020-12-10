@@ -17,11 +17,13 @@ import java.util.concurrent.Executors;
 
 @Database(entities = {Meal.class}, version = 3, exportSchema = false)
 public abstract class MealRoomDatabase extends RoomDatabase {
+
     /**
      * Database creation.
      *
      * @return Returns the database instance.
      */
+
     public abstract MealDao mealDao();
     private static volatile MealRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

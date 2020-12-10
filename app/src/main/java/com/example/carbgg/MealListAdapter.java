@@ -15,6 +15,7 @@ public class MealListAdapter extends ListAdapter<Meal, MealViewHolder> {
      *                     <a href="https://developer.android.com/reference/androidx/leanback/widget/DiffCallback">
      *                     Android Documentation</a>
      */
+
     public MealListAdapter(@NonNull DiffUtil.ItemCallback<Meal> diffCallback) {
         super(diffCallback);
     }
@@ -27,6 +28,7 @@ public class MealListAdapter extends ListAdapter<Meal, MealViewHolder> {
     /**
      * Gets the current Meal object and binds it to holder.
      */
+
     @Override
     public void onBindViewHolder(MealViewHolder holder, int position) {
         Meal current = getItem(position);
@@ -36,6 +38,7 @@ public class MealListAdapter extends ListAdapter<Meal, MealViewHolder> {
     /**
      * Updates list instantly according to changes.
      */
+
     static class MealDiff extends DiffUtil.ItemCallback<Meal> {
         @Override
         public boolean areItemsTheSame(@NonNull Meal oldItem, @NonNull Meal newItem) {
