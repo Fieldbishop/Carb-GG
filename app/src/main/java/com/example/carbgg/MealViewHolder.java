@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Handles "Meal" objects on the recyclerview
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
+ */
 class MealViewHolder extends RecyclerView.ViewHolder {
     private final TextView mealItemView;
 

@@ -15,6 +15,7 @@ import java.util.Objects;
 
 /**
  * Adds meal to database
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 
 public class AddMealActivity extends AppCompatActivity {

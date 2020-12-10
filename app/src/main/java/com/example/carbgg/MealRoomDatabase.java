@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Creates database.
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 
 @Database(entities = {Meal.class}, version = 3, exportSchema = false)
