@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets total carbohydrates from singleton array "ListToSend", insulinEfficiency from shared preferences and calculates an insulin amount to be displayed on a textview with these numbers.
+     * Gets total carbohydrates from singleton array "ListToSend", insulinEfficiency from shared preferences, calls
+     * InsulinCalculator-class with these values to calculate suggested insulin amount and String presentation
      * Saves an arraylist of objects containing date and amount of carbohydrates calculated into shared preferences for usage in history tab.
      * Clears the arraylist that was used to get meal data into the calculation
      * @param view
@@ -84,12 +85,8 @@ public class MainActivity extends AppCompatActivity {
         }
         SharedPreferences prefGet = getSharedPreferences("configs" , Context.MODE_PRIVATE);
         float insulinEfficiency = prefGet.getFloat("inEfKey", Context.MODE_PRIVATE);
-        float insulinAmount = (totalCarbs / 10) * insulinEfficiency;
-        if (insulinAmount == 0){
-            insulinAmount = (totalCarbs / 10) * 1;
-        }
-        String insulinDisplay = Float.toString(insulinAmount);
-        tv.setText("Suggested insulin intake: "+ insulinDisplay+ " units");
+        InsulinCalculator calculator = new InsulinCalculator(insulinEfficiency, totalCarbs);
+        tv.setText(calculator.toString());
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         SingletonClassHistory.getInstance().addNew(date,totalCarbs);
         saveHistory();
