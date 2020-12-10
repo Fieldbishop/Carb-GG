@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 /**
  * Activity for setting insulin coefficient per 10g of carbohydrates and storing it as a preference
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 public class SettingsPage extends AppCompatActivity {
     private EditText et;

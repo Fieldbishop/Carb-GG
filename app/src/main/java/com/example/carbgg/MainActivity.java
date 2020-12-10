@@ -24,6 +24,7 @@ import java.util.Locale;
 
 /**
  * Home activity of the app
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 public class MainActivity extends AppCompatActivity {
     float x1, x2, y1, y2;

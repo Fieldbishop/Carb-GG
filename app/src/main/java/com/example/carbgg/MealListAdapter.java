@@ -6,6 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+/**
+ * Adapter for recyclerview "MealList"
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
+ */
 public class MealListAdapter extends ListAdapter<Meal, MealViewHolder> {
 
     /**

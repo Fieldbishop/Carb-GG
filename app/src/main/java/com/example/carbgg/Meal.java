@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 /**
  * Defines database objects
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 
 @Entity(tableName = "Meal")

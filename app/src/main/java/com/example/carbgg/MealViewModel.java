@@ -7,6 +7,10 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+/**
+ * Manages data for recyclerview
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
+ */
 public class MealViewModel extends AndroidViewModel {
 
     private final LiveData<List<Meal>> allMeals;

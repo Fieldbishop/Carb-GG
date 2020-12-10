@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Creates LiveDataList from database entries
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 
 class MealRepository {

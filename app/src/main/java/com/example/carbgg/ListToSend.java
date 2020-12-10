@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Singleton arraylist for sending data from meal activity to the calculator activity
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 public class ListToSend{
     private static ArrayList<Meal> meals;

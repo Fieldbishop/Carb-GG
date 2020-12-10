@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Singleton arraylist for storing objects "DataPointToSave"
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 public class SingletonClassHistory {
     private static ArrayList<DataPointToSave> dataPoints;

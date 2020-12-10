@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 /**
  * Meal list. Link to add a new meal.
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 
 public class SwipeLeft extends AppCompatActivity {

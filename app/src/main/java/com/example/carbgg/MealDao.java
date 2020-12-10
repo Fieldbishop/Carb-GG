@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Database access points.
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 
 @Dao

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 /**
  * History tab showing carbohydrates consumed per meal and date
+ * @author Jaakko Nahkala, Riku Immonen and Lassi Piispanen
  */
 public class SwipeRight extends AppCompatActivity {
 
