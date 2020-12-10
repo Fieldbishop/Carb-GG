@@ -31,9 +31,6 @@ public class Meal {
     public Meal(@NonNull String mealName, @NonNull float mealCarbs, String mealDescription) {
         this.mealName = mealName;
         this.mealCarbs = mealCarbs;
-        /**
-         * break stuff
-         */
         this.mealDescription = mealDescription;
         this.isFavourite = false;
     }
@@ -42,10 +39,12 @@ public class Meal {
         this.isFavourite = isFavourite;
     }
 
+    @NonNull
     public String getMealName() {
         return this.mealName;
     }
 
+    @NonNull
     public Float getMealCarbs() {
         return this.mealCarbs;
     }
@@ -64,6 +63,7 @@ public class Meal {
         return this.mealName + ", " + mealCarbsD + " g";
     }
 
+    @NonNull
     @Override
     public String toString() {
         return mealName;
